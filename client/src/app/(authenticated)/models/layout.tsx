@@ -1,5 +1,5 @@
 import Header from '@/components/authenticated/Navbar_OLD';
-import SideBarMenu from '@/components/authenticated/SideBarMenu';
+import SideBarMenu from '@/components/SideBarMenu';
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
 

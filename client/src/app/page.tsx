@@ -1,6 +1,6 @@
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-[#090A0B]  flex flex-col items-center justify-center px-6 py-12">
+    <main className="min-h-screen   flex flex-col items-center justify-center px-6 py-12">
       <div className="w-full max-w-4xl text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
           YourWebsiteName
@@ -24,7 +24,7 @@ export default function LandingPage() {
           <button className="px-6 py-3 text-lg font-medium bg-gray-200 text-gray-800 rounded-2xl hover:bg-gray-300 transition">
             About
           </button>
-          <button className="px-6 py-3 text-lg font-medium bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition">
+          <button className="px-6 py-3 text-lg font-medium bg-[#6467F2] text-white rounded-2xl bg-[#7375ef] transition">
             Pricing
           </button>
         </div>

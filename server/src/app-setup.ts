@@ -4,6 +4,8 @@ import express from 'express';
 import cors from 'cors'
 import { errorMiddleware } from './middleware/error-middlewate.js';
 import { router } from './routes/router.js';
+import { initPairTracking } from './listeners/subscription-listeners.js';
+
 
 const app = express();
 app.use(cors({origin: 'http://localhost:3000', credentials: true}));
@@ -20,6 +22,7 @@ app.use((req, _res, next)=>{
 app.use(router);
 app.use(errorMiddleware)
 
+initPairTracking()
 
 
 //* I exported the app for testing vitest:

@@ -2,17 +2,21 @@
 
 import dotenv from 'dotenv';
 
-dotenv.config({ path: `config/express.env` });
+dotenv.config({ path: `config/local.env` });
 dotenv.config({ path: `../shared/eth.env` }); //* Defined in npm script
 
 const requiredVars = [
     'PORT',
-	'PRIVATE_KEY',
-	'RPC_HTTP_URL',
-	'TOKEN_FACTORY_ADDRESS',
-	'PAIR_FACTORY_ADDRESS',
-	'WETH_ADDRESS',
-	'ROUTER_ADDRESS'
+
+	'SEPOLIA_TESTNET_PRIVATE_KEY',
+    'SEPOLIA_RPC_WS_URL',
+    'SEPOLIA_RPC_HTTP_URL',
+    'SEPOLIA_TESTNET_PRIVATE_KEY',
+
+	'ANVIL_PRIVATE_KEY',
+	'ANVIL_RPC_HTTP_URL',
+    'ANVIL_RPC_WS_URL',
+    'ANVIL_SUBSCRIPTION_CONTRACT'
 ];
 
 requiredVars.forEach((varName) => {
@@ -26,13 +30,19 @@ requiredVars.forEach((varName) => {
 });
 
 let SUBSCRIPTION_CA: string
+let PRIVATE_KEY: string
+let WEBSOCKET_RPC_URL: string
 
 if (process.env.ETH_NETWORK === 'anvil') {
     SUBSCRIPTION_CA = process.env.ANVIL_SUBSCRIPTION_CONTRACT!
+    PRIVATE_KEY = process.env.ANVIL_PRIVATE_KEY!
+    WEBSOCKET_RPC_URL = process.env.ANVIL_RPC_WS_URL!
 } 
 
 if (process.env.ETH_NETWORK === 'sepolia') {
     // SUBSCRIPTION_CA = process.env.SEPOLIA_SUBSCRIPTION_CONTRACT!
+    // PRIVATE_KEY = process.env.SEPOLIA_TESTNET_PRIVATE_KEY!
+    // WEBSOCKET_RPC_URL = process.env.SEPOLIA_RPC_WS_URL!
 }
 
-export { SUBSCRIPTION_CA }
+export { SUBSCRIPTION_CA, PRIVATE_KEY, WEBSOCKET_RPC_URL }

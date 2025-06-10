@@ -4,38 +4,60 @@ import { Check } from 'lucide-react';
 import { useAccountContext } from '@/app/context/AccountContext';
 import { getSubscriptionContract } from '~shared/src/contracts/subscriptions-contract';
 import { useEffect, useState } from 'react';
-import { Contract } from 'ethers';
+import { Contract, parseEther } from 'ethers';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
-export default function Tiers() {
+type Props = {
+	SubscriptionContractCa: string
+};
+
+export default function Tiers({ SubscriptionContractCa }: Props) {
 	const { browserProvider } = useAccountContext();
 	const [contract, setContract] = useState<Contract | null>(null);
+	const router = useRouter()
 	useEffect(() => {
 		if (!browserProvider) return;
 		const run = async()=>{
 		
 			const signer = await browserProvider?.getSigner();
-			const SubscriptionContract = getSubscriptionContract(process.env.NEXT_PUBLIC_ANVIL_SUBSCRIPTIONS_CA!,signer);
+			const SubscriptionContract = getSubscriptionContract(SubscriptionContractCa, signer);
 			setContract(SubscriptionContract);
 		}
 		run()
 	}, [browserProvider]);
 
-	const onPay = async (planId: string) => {
-		if (!contract) return; //* Just in case
-		const tx = await contract.subscribe(planId);
-		await tx.wait()
+	const onPay = async (planId: string, price: string) => {
+		try{
+			if (!contract) return; //* Just in case
+			const tx = await contract.subscribe(planId, {value: parseEther(price)});
+			await tx.wait()
+
+			router.push('/thanknyou')
+			
+		}catch(error: any){
+			 console.error('Error message:', error.message);
+			// Ethers.js v6: structured fields
+			if (error.code === 'CALL_EXCEPTION') {
+				if(error.reason){
+					toast.error(error.reason)
+				}else{
+					toast.error('Metamask error, likely low gas')
+				}
+			}
+		}
 	};
 
 	const tiers = [
 		{
 			name: 'Basic',
-			price: '0.1 ETH',
+			price: '0.1',
 			features: ['Basic models', '10GB Storage', 'Email Support'],
 			planId: '0',
 		},
 		{
 			name: 'Pro',
-			price: '0.2 ETH',
+			price: '0.2',
 			features: [
 				'Inermediate models',
 				'Image generation',
@@ -47,7 +69,7 @@ export default function Tiers() {
 		},
 		{
 			name: 'Enterprise',
-			price: '0.3 ETH',
+			price: '0.3',
 			features: [
 				'Advanced models',
 				'1TB Storage',
@@ -91,7 +113,7 @@ export default function Tiers() {
               {/* //* Price */}
               <div className="mb-4">
                 <span className="text-4xl font-bold ">
-                  {tier.price}
+                  {tier.price + ' ETH'}
                 </span>
                 <span className="">/month</span>
               </div>
@@ -107,7 +129,8 @@ export default function Tiers() {
               ))}
             </ul>
 
-            <button className={`w-full py-2 px-4 rounded-md font-medium transition-colors bg-[#6467F2]`} onClick={()=>{onPay(tier.planId)}}>
+            <button className={`w-full py-2 px-4 rounded-md font-medium transition-colors bg-[#6467F2]`}
+			onClick={()=>{onPay(tier.planId, tier.price)}}>
               Get Started
             </button>
           </div>

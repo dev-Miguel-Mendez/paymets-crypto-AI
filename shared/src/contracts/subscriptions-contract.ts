@@ -12,7 +12,7 @@ export const getSubscriptionContract = ( CA: string, provider: JsonRpcApiProvide
 		// 'function plans(uint256) view returns (uint256 cost, uint256 duration)',
 		// 'function subscriptions(address, uint256) view returns (uint256 start, uint256 nextPayment, bool active)',
 		// 'event PaymentReceived(address indexed subscriber, uint256 indexed planId, uint256 amount, uint256 date)',
-		// 'event SubscriptionCreated(address indexed subscriber, uint256 indexed planId, uint256 date)',
+		'event SubscriptionCreated(address indexed subscriber, uint256 indexed planId, uint256 date)',
 		// 'event SubscriptionCancelled(address indexed subscriber, uint256 indexed planId, uint256 date)',
 		// 'event Withdrawn(address indexed recipient, uint256 amount, uint256 date)',
 	];

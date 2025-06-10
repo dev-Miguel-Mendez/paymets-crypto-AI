@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import { Inter } from "next/font/google";
 // import Providers from "./providers";
 import AccountContextProvider from "./context/AccountContext";
+import { Toaster } from "react-hot-toast";
+
 
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", });
@@ -15,6 +17,8 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
       <html lang="en" className={inter.variable}>
       <body className={'antialiased'}>
+        <Toaster></Toaster>
+        
         {/* <Providers>
           <Navbar></Navbar>
           {children}

@@ -15,15 +15,11 @@
 		"module": "NodeNext",
 
 		/* Emit */
+		"outDir": "./dist",
+		"rootDir": "./src",
 		"esModuleInterop": true,
-		"skipLibCheck": true ,
-		"baseUrl": ".",
-		"paths": {
-			"~shared/*":["../shared/*"]
-		}
+		"skipLibCheck": true 
 	},
-
-	"include": ["src/**/*", "../shared/**/*"],
 
 	"exclude": [
 		"node_modules",

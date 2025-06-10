@@ -1,26 +1,37 @@
-"use client"
+'use client';
 
 import { Check } from 'lucide-react';
-import { BrowserProvider } from 'ethers';
 import { useAccountContext } from '@/app/context/AccountContext';
-
-
+import { getSubscriptionContract } from '~shared/src/contracts/subscriptions-contract';
+import { useEffect, useState } from 'react';
+import { Contract } from 'ethers';
 
 export default function Tiers() {
+	const { browserProvider } = useAccountContext();
+	const [contract, setContract] = useState<Contract | null>(null);
+	useEffect(() => {
+		if (!browserProvider) return;
+		const run = async()=>{
+		
+			const signer = await browserProvider?.getSigner();
+			const SubscriptionContract = getSubscriptionContract(process.env.NEXT_PUBLIC_ANVIL_SUBSCRIPTIONS_CA!,signer);
+			setContract(SubscriptionContract);
+		}
+		run()
+	}, [browserProvider]);
 
-  const  { browserProvider} = useAccountContext();
+	const onPay = async (planId: string) => {
+		if (!contract) return; //* Just in case
+		const tx = await contract.subscribe(planId);
+		await tx.wait()
+	};
 
-    const onPay = async () => {
-        const signer = await browserProvider?.getSigner()
-		  return;
-    };
-
-
-    const tiers = [
+	const tiers = [
 		{
 			name: 'Basic',
 			price: '0.1 ETH',
 			features: ['Basic models', '10GB Storage', 'Email Support'],
+			planId: '0',
 		},
 		{
 			name: 'Pro',
@@ -31,6 +42,7 @@ export default function Tiers() {
 				'Priority Support',
 				'API Access',
 			],
+			planId: '1',
 			popular: true,
 		},
 		{
@@ -42,11 +54,12 @@ export default function Tiers() {
 				'24/7 Support',
 				'Custom Integration',
 			],
+			planId: '2',
 		},
-    ];
+	];
 
-    //prettier-ignore
-  return (
+	//prettier-ignore
+	return (
     <div className="p-8 max-w-[1000px] mx-auto">
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold  mb-2">
@@ -94,7 +107,7 @@ export default function Tiers() {
               ))}
             </ul>
 
-            <button className={`w-full py-2 px-4 rounded-md font-medium transition-colors bg-[#6467F2]`} onClick={onPay}>
+            <button className={`w-full py-2 px-4 rounded-md font-medium transition-colors bg-[#6467F2]`} onClick={()=>{onPay(tier.planId)}}>
               Get Started
             </button>
           </div>

@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "ENVIRONMENT=local next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev_local": "ENVIRONMENT=local next dev",
+    "build_nginx": "ENVIRONMENT=nginx next build",
+    "build_docker": "ENVIRONMENT=docker next build",
+    "start_docker": "ENVIRONMENT=docker next start",
     "lint": "next lint"
   },
   "dependencies": {

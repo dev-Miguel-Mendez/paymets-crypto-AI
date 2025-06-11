@@ -7,7 +7,7 @@ export const wagmiConfig = getDefaultConfig({
   appName: 'My App',
   chains: [ sepolia, anvil],
   ssr: false,
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID!, //$ EXCLUSIVE TO WALLET CONNECT project id, https://cloud.reown.com
+  projectId: 'b1e72c6a68f48109b64d006497cbc65a', //$ EXCLUSIVE TO WALLET CONNECT project id, https://cloud.reown.com
   transports: {
     [sepolia.id]: http(process.env.SEPOLIA_RPC_HTTP_URL),
     [anvil.id]: http(process.env.ANVIL_RPC_HTTP_URL)

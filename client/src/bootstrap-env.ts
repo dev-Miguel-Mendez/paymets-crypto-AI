@@ -14,8 +14,6 @@ const requiredVars = [
 	// 'RPC_HTTP_URL',
     'BACKEND_URL',
 
-    //* These is preloaded by NextJS .env
-    'NEXT_PUBLIC_PROJECT_ID',
     "ANVIL_RPC_HTTP_URL",
     "ANVIL_SUBSCRIPTION_CONTRACT",
     

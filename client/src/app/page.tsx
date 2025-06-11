@@ -24,7 +24,7 @@ export default function LandingPage() {
           <button className="px-6 py-3 text-lg font-medium bg-gray-200 text-gray-800 rounded-2xl hover:bg-gray-300 transition">
             About
           </button>
-          <button className="px-6 py-3 text-lg font-medium bg-[#6467F2] text-white rounded-2xl bg-[#7375ef] transition">
+          <button className="px-6 py-3 text-lg font-medium  text-white rounded-2xl bg-[#7375ef] transition">
             Pricing
           </button>
         </div>

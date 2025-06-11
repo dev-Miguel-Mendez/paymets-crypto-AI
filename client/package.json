@@ -4,9 +4,16 @@
   "private": true,
   "scripts": {
     "dev_local": "ENVIRONMENT=local next dev",
-    "build_nginx": "ENVIRONMENT=nginx next build",
+
     "build_docker": "ENVIRONMENT=docker next build",
     "start_docker": "ENVIRONMENT=docker next start",
+    
+    
+      "build_aws": "ENVIRONMENT=aws next build",
+      "start_aws": "ENVIRONMENT=aws next build",
+      
+
+
     "lint": "next lint"
   },
   "dependencies": {

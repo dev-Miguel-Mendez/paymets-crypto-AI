@@ -1,3 +1,9 @@
+
+To Run locally: 
+Read README_SETUP.md for environment variables
+Run docker compose up --build
+
+
 # 🦊 Ethereum Payments Demo (MetaMask + Sepolia)
 
 This is a small demo project that shows how to integrate Ethereum-based payments into a modern web app using MetaMask and other EVM-compatible wallets.

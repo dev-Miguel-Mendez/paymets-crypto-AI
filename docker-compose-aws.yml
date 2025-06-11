@@ -1,0 +1,3 @@
+services:
+  client:
+    command: sh -c "npm run build_aws && npm run start_aws"

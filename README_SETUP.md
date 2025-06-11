@@ -1,3 +1,10 @@
+To Run locally: 
+
+Read README_SETUP.md for environment variables
+
+docker compose -f docker-compose.yml -f docker-compose-local.yml up --build
+
+
 
 Install rainbowkit in client
 npm install @rainbow-me/rainbowkit wagmi viem @tanstack/react-query

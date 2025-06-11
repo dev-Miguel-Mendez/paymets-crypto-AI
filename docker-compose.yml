@@ -15,6 +15,6 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-    command: sh -c "npm run build_docker && npm run start_docker"
+    #! command:  SPECIFIC TO OTHER compose files 
     volumes:
       - ./shared:/shared

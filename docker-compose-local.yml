@@ -1,0 +1,3 @@
+services:
+  client:
+    command: sh -c "npm run build_docker && npm run start_docker"

@@ -1,4 +1,4 @@
-import Tiers from "@/components/Subscriptions"
+import Tiers from "@/components/Tiers"
 
 export default async function TiersPage() {
 

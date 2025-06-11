@@ -41,6 +41,7 @@ export default function Tiers({ anvilSubscriptionContractCa, sepoliaSubscription
     }, [isConnected, chainId]);
 
     const onPay = async (planId: string, price: string) => {
+        if(!isConnected || !chainId) {toast.error('Please connect your wallet'); return;}
         if (!contract) return; //* Just in case
         if (chainId !== 11155111) {
             toast.error('Please connect to Sepolia Test-network, do not use real ETH');

@@ -10,7 +10,7 @@
     
     
       "build_aws": "ENVIRONMENT=aws next build",
-      "start_aws": "ENVIRONMENT=aws next build",
+      "start_aws": "ENVIRONMENT=aws next start",
       
 
 

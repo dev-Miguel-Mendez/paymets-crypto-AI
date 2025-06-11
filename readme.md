@@ -24,7 +24,7 @@ It features a Next.js frontend, an Express.js backend, and a basic smart contrac
 2. They can subscribe by interacting with the smart contract.
 3. The backend listens for the emitted subscription event.
 4. A simple test page can query the backend to verify if a subscription exists.
-5. (Not implemented) A future version could use wallet signatures to enforce access (i.e., a proper paywall).
+
 
 ## 🧩 Why Listen for Events?
 
@@ -39,9 +39,3 @@ Although the backend currently just listens and logs events, this setup is valua
 
 If you're testing the live demo, make sure you're connected to the **Sepolia testnet** to avoid spending real ETH.
 
-## 📝 TODO / Improvements
-
-- Add signature-based paywall validation
-- Improve UI/UX for subscription status
-- Backend logic to grant/deny access on subscription
-- Add user feedback on successful subscription

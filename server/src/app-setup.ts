@@ -6,7 +6,7 @@ import { errorMiddleware } from './middleware/error-middlewate.js';
 import { router } from './routes/router.js';
 import { initPairTracking } from './listeners/subscription-listeners.js';
 
-const allowedOrigins = ['http://localhost:3000', 'https://omegalol.click'];
+const allowedOrigins = ['https://localhost:3000', 'https://omegalol.click'];
 
 const app = express();
 app.use(cors({

@@ -1,17 +1,15 @@
-import { EventLog } from "ethers";
+import { SUBSCRIPTION_CA } from "src/boostrap-env.js";
 import { webSocketProvider } from "src/lib/providers.js";
 import { getSubscriptionContract } from "~shared/src/contracts/subscriptions-contract.js";
 
-const subscriptionContract = getSubscriptionContract(process.env.ANVIL_SUBSCRIPTION_CONTRACT!, webSocketProvider)
+const subscriptionContract = getSubscriptionContract(SUBSCRIPTION_CA!, webSocketProvider)
 
 
 
 export const initPairTracking = async()=>{
-
-    
-    subscriptionContract.on('SubscriptionCreated', (pairAddress: string, _token0Address: string, _token1Address: string)=>{
-        console.log('New Subscription: ' + pairAddress);
-
+    subscriptionContract.on('SubscriptionCreated', (subscriber: string, plainId: number)=>{
+        console.log('New Subscriber: ' + subscriber);
+        console.log('Plan Id: ' + plainId);
     })
 
 }    

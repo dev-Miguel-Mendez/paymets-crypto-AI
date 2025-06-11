@@ -1,7 +1,7 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {  http } from 'wagmi';
-import { sepolia, anvil } from 'wagmi/chains';
+import { sepolia, anvil,  } from 'wagmi/chains';
 
 export const wagmiConfig = getDefaultConfig({
   appName: 'My App',

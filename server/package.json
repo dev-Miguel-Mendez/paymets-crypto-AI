@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "dev_anvil": "ETH_NETWORK=anvil npx nodemon",
-        "dev_sepolia": "ETH_NETWORK=anvil npx nodemon"
+        "dev_sepolia": "ETH_NETWORK=sepolia npx nodemon"
     },
     "keywords": [],
     "author": "",

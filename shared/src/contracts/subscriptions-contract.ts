@@ -7,10 +7,11 @@ export const getSubscriptionContract = ( CA: string, provider: JsonRpcApiProvide
 	const abi = [
 		'function subscribe(uint256 planId) payable',
 		// 'function pay(uint256 planId) payable',
-		// 'function cancel(uint256 planId)',
+		'function cancel()',
 		// 'function withdraw()',
 		// 'function plans(uint256) view returns (uint256 cost, uint256 duration)',
 		// 'function subscriptions(address, uint256) view returns (uint256 start, uint256 nextPayment, bool active)',
+		'function getUserPlanId(address user) view returns (uint, bool, uint)',
 		// 'event PaymentReceived(address indexed subscriber, uint256 indexed planId, uint256 amount, uint256 date)',
 		'event SubscriptionCreated(address indexed subscriber, uint256 indexed planId, uint256 date)',
 		// 'event SubscriptionCancelled(address indexed subscriber, uint256 indexed planId, uint256 date)',

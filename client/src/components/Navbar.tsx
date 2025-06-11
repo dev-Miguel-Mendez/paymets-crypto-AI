@@ -24,11 +24,9 @@ export default function  Navbar() {
     return (
         <div className="flex  items-center bg-[#090A0B] w-full text-[#917e7e]">
             <div className="flex justify-around items-center flex-[4]">
-                <Link href={'/'} className="hover:underline color"> Home - blocks </Link>
-                <Link href={'/transact'} className="hover:underline color"> Transact</Link>
-                <Link href={'/getbalance'} className="hover:underline color"> Get Balance</Link>
-                <Link href={'/fundme'} className="hover:underline color"> Fund Me</Link>
-                <Link href={'/create-pair'}> Create Pair</Link>
+                <Link href={'/mysubscription'} className="hover:underline color"> My Subscription </Link>
+                <Link href={'/about'} className="hover:underline color"> About </Link>
+                <Link href={'/subscriptions'} className="hover:underline color"> Subscription tiers </Link>
             </div>
             <div className="flex-[2] flex">
                 <input className="pl-2  w-full rounded-[6px] h-[35px] bg-[#3a3b3f] placeholder-[#999797]" placeholder="Search Models"

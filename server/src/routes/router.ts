@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { signin, triggerBadRequest, signup } from "../controllers/users.js";
 import { validate } from "../middleware/validateBody.js";
-import { loginSchema, signupSchema } from "../zodSchemas/user-schema.js";
+import { verifySubscriptionSchema } from "src/zodSchemas/user-schema.js";
+import { verifySubscription } from "src/controllers/verify-subscription.js";
 //*types:
 
 
@@ -10,10 +10,6 @@ import { loginSchema, signupSchema } from "../zodSchemas/user-schema.js";
 
 export const router = Router();
 
+router.get('/mysubscription/:walletAddress', validate(verifySubscription, verifySubscriptionSchema) )
 
-router.post('/signup', validate(signup, signupSchema) )
-
-router.post('/signin', validate(signin, loginSchema))
-
-router.post('/logout', triggerBadRequest)
 

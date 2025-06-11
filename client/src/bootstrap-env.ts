@@ -4,9 +4,7 @@
 
 import dotenv from 'dotenv';
 
-// dotenv.config({ path: `../shared/config/${process.env.ETH_NETWORK}.env` }); //* Defined in npm script
-
-// dotenv.config({path: '../shared/.env'}) //* FOR PRISMA ENV
+dotenv.config({ path: `./${process.env.ENVIRONMENT}.env` }); //* Defined in npm script
 
 dotenv.config({path: '../shared/eth.env'}) //* All CA's
 
@@ -14,12 +12,15 @@ const requiredVars = [
     //* These come from ../shared/
 	// 'PRIVATE_KEY',
 	// 'RPC_HTTP_URL',
+    'BACKEND_URL',
 
     //* These is preloaded by NextJS .env
     'NEXT_PUBLIC_PROJECT_ID',
     "ANVIL_RPC_HTTP_URL",
+    "ANVIL_SUBSCRIPTION_CONTRACT",
+    
     "SEPOLIA_RPC_HTTP_URL",
-    "ANVIL_SUBSCRIPTION_CONTRACT"
+    "SEPOLIA_SUBSCRIPTION_CONTRACT"
 
 ];
 

@@ -16,3 +16,6 @@ This is so that:
 
         ###### ENV variables SERVER:
 1- The server also uses its specific environment variables other than the ones in the shared folder.
+
+        ###### SHARED folder:
+1- Manually run npm i on ./shared , docker won't do it.

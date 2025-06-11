@@ -5,6 +5,7 @@ services:
       - "3001:3001"
     volumes:
       - ./shared:/shared
+      - ./server/src:/app/src:ro
     restart: on-failure
 
     command: "npm run dev_sepolia"
@@ -18,3 +19,4 @@ services:
     #! command:  SPECIFIC TO OTHER compose files 
     volumes:
       - ./shared:/shared
+      - ./client/src:/app/src:ro

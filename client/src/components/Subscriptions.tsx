@@ -105,7 +105,7 @@ export default function Tiers({ anvilSubscriptionContractCa, sepoliaSubscription
         <div className="p-8 max-w-[1000px] mx-auto">
         <div className="text-center mb-12">
             <h1 className="text-3xl font-bold  mb-2">
-            Available Subscriptions
+            available subscriptions for AI models
             </h1>
             <p className="text-gray-600">
             Choose the plan that works for you or choose one-time payments

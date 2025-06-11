@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import axios from 'axios'
-import { useAccountContext } from "@/app/context/AccountContext"
 import { Contract, BrowserProvider} from "ethers"
 import { getSubscriptionContract } from "~shared/src/contracts/subscriptions-contract"
 import toast from "react-hot-toast"

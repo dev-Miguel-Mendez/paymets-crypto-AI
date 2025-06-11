@@ -3,36 +3,29 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { useAccountContext } from "@/app/context/AccountContext"
-import { Contract, BrowserProvider} from "ethers"
+import { Contract} from "ethers"
 import { getSubscriptionContract } from "~shared/src/contracts/subscriptions-contract"
 import toast from "react-hot-toast"
-import { useAccount } from "wagmi"
 
 type Props = {
     backendUrl: string
-    anvilSubscriptionContractCa: string
-    sepoliaSubscriptionContractCa: string
+    SubscriptionContractCa: string
 }
 
-export default function MySubscription({ backendUrl, anvilSubscriptionContractCa, sepoliaSubscriptionContractCa }: Props) {
+export default function MySubscription({ backendUrl, SubscriptionContractCa }: Props) {
+    const { account } = useAccountContext();
     const [subscriptionId, setSubscriptionId] = useState<number | null>(null);
     const [nextPayment, setNextPayment] = useState<number | null>(null);
     const [contract, setContract] = useState<Contract | null>(null);
-    const { isConnected, chainId, address: account} = useAccount();
-
-    const contracts: Record<number, string> = {
-        31337: anvilSubscriptionContractCa,
-        11155111: sepoliaSubscriptionContractCa
-    }
-
+    const { browserProvider } = useAccountContext();
     useEffect(() => {
         const verifySubscription = async () => {
-            if (!isConnected || !chainId) return;
+            if (!account) return;
+            if (!browserProvider) return;
             
             //* Get the subscription contract and signer
-            const browserProvider = new BrowserProvider(window.ethereum)
             const signer = await browserProvider?.getSigner();
-            const SubscriptionContract = getSubscriptionContract(contracts[chainId], signer);
+            const SubscriptionContract = getSubscriptionContract(SubscriptionContractCa, signer);
             setContract(SubscriptionContract);
 
             //* Verify the subscription
@@ -49,26 +42,25 @@ export default function MySubscription({ backendUrl, anvilSubscriptionContractCa
         };
 
         verifySubscription();
-    }, [isConnected, chainId]);
+    }, [account]);
 
     const handleCancel = async () => {
         if (!contract) return; //* Just in case
          try{
              const tx = await contract.cancel();
-             toast.success('Processing cancellation, please wait...')
              await tx.wait()
              setSubscriptionId(null);
              toast.success('Subscription cancelled')
          }catch(error: any){
              console.error('Error message:', error.message);
-            // Ethers.js v6: structured fields
-            if (error.code === 'CALL_EXCEPTION') {
-                if(error.reason){
-                    toast.error(error.reason)
-                }else{
-                    toast.error('Metamask error, likely low gas')
-                }
-            }
+			// Ethers.js v6: structured fields
+			if (error.code === 'CALL_EXCEPTION') {
+				if(error.reason){
+					toast.error(error.reason)
+				}else{
+					toast.error('Metamask error, likely low gas')
+				}
+			}
          }
     };
 

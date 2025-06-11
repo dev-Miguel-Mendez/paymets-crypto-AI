@@ -1,12 +1,16 @@
-import Tiers from "@/components/Subscriptions";
+import Tiers from "@/components/Subscriptions"
 
 export default async function TiersPage() {
 
-    const SubscriptionContractCa = process.env.SEPOLIA_SUBSCRIPTION_CONTRACT!
+    const anvilSubscriptionContractCa = process.env.ANVIL_SUBSCRIPTION_CONTRACT!
+    const sepoliaSubscriptionContractCa = process.env.SEPOLIA_SUBSCRIPTION_CONTRACT!
+    
     
     return (
         <div>
-            <Tiers SubscriptionContractCa={SubscriptionContractCa}></Tiers>
+            <Tiers anvilSubscriptionContractCa={anvilSubscriptionContractCa} sepoliaSubscriptionContractCa={sepoliaSubscriptionContractCa}></Tiers>
         </div>
     )
 }
+
+

@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Inter } from "next/font/google";
-// import Providers from "./providers";
-import AccountContextProvider from "./context/AccountContext";
 import { Toaster } from "react-hot-toast";
+
+//! DO NOT REMOVE THIS IMPORT COMMENT, READ THE README in this directory.
+import Providers from "./providers";
+
+//! DO NOT REMOVE THIS IMPORT COMMENT, READ THE README in this directory.
+// import AccountContextProvider from "./context/AccountContext";
 
 
 
@@ -19,15 +23,15 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
       <body className={'antialiased'}>
         <Toaster></Toaster>
         
-        {/* <Providers>
+        <Providers>
           <Navbar></Navbar>
           {children}
-        </Providers> */}
+        </Providers>
 
-        <AccountContextProvider>
+        {/* <AccountContextProvider>
           <Navbar></Navbar>
           {children}
-        </AccountContextProvider>
+        </AccountContextProvider> */}
 
       </body>
     </html>

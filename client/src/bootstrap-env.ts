@@ -4,7 +4,10 @@
 
 import dotenv from 'dotenv';
 
-dotenv.config({ path: `./${process.env.ENVIRONMENT}.env` }); //* Defined in npm script
+//* QUESTIONS? read README 
+
+
+dotenv.config({ path: `./nextjs-specific-config/${process.env.ENVIRONMENT}.env` }); //* Defined in npm script
 
 dotenv.config({path: '../shared/eth.env'}) //* All CA's
 

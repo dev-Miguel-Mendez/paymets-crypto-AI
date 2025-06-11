@@ -6,9 +6,19 @@ import { errorMiddleware } from './middleware/error-middlewate.js';
 import { router } from './routes/router.js';
 import { initPairTracking } from './listeners/subscription-listeners.js';
 
+const allowedOrigins = ['http://localhost:3000', 'https://omegalol.click'];
 
 const app = express();
-app.use(cors({origin: 'http://localhost:3000', credentials: true}));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 app.use((req, _res, next)=>{

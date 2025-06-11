@@ -1,6 +1,8 @@
 
 To Run locally: 
+
 Read README_SETUP.md for environment variables
+
 Run docker compose up --build
 
 
